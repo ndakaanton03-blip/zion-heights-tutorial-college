@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zion Heights Tutorial College</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0b5ed7">
+  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+    :root{
+      --blue:#0b5ed7; --gold:#c9a227; --purple:#6f42c1; --green:#198754; --bg:#f4f6f8;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial;background:linear-gradient(180deg,#eef3ff,#ffffff);color:#222}
+    header{background:linear-gradient(120deg,var(--blue),var(--purple),var(--gold));color:#fff;padding:18px 16px 22px;text-align:center}
+    header img.logo{width:96px;height:auto;display:block;margin:0 auto 8px}
+    header h1{margin:6px 0 2px;font-size:22px}
+    header p{margin:0;font-size:13px;opacity:.95}
+
+    .container{padding:14px}
+    .card{background:#fff;border-radius:18px;box-shadow:0 12px 26px rgba(0,0,0,.1);padding:16px;margin-bottom:14px;border-left:6px solid var(--gold)}
+    .card h3{margin:0 0 8px;color:var(--blue)}
+    .pill{display:inline-block;background:linear-gradient(90deg,var(--blue),var(--purple));color:#fff;border-radius:999px;padding:6px 12px;font-size:12px;margin:4px 6px 0 0}
+
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    .chip{background:linear-gradient(135deg,#f7f9ff,#eef1ff);border:1px solid #e6ebff;border-radius:14px;padding:10px;text-align:center;font-size:13px}
+
+    form input, form textarea{width:100%;padding:12px;border-radius:14px;border:1px solid #ddd;margin:8px 0;font-size:15px}
+    .btn{width:100%;padding:14px;border-radius:16px;border:none;font-size:16px;font-weight:700;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--blue),var(--purple));color:#fff}
+    .btn-whatsapp{background:#25D366;color:#fff;margin-top:8px}
+
+    /* Game */
+    .game-box{background:linear-gradient(135deg,#fff3cd,#fff);border-radius:16px;padding:14px;text-align:center}
+    .game-btn{background:var(--green);color:#fff;border:none;border-radius:12px;padding:10px 14px;font-size:14px;cursor:pointer}
+
+    .bottom-nav{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #eaeaea;display:flex;justify-content:space-around;padding:10px 0}
+    .bottom-nav a{color:#666;text-decoration:none;font-size:12px}
+    .spacer{height:70px}
+    footer{padding:12px;text-align:center;color:#666;font-size:12px}
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Zion Heights Tutorial College Logo" class="logo">
+  <h1>Zion Heights Tutorial College</h1>
+  <p>Where Every Step Is Significant.</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h3>Welcome</h3>
+    <p>Quality education with discipline, innovation, and student growth at the center.</p>
+    <span class="pill">Hostel Available</span>
+    <span class="pill">Modern Learning</span>
+  </div>
+
+  <div class="card">
+    <h3>Subjects Offered</h3>
+    <div class="grid">
+      <div class="chip">English</div><div class="chip">Oshikwanyama</div><div class="chip">Oshindonga</div><div class="chip">Mathematics</div>
+      <div class="chip">Physics</div><div class="chip">Chemistry</div><div class="chip">Biology</div><div class="chip">Accounting</div>
+      <div class="chip">Economics</div><div class="chip">Business Studies</div><div class="chip">Entrepreneurship</div><div class="chip">History</div>
+      <div class="chip">Geography</div><div class="chip">Agriculture</div><div class="chip">Development Studies</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Fees</h3>
+    <p><strong>Registration:</strong> N$200.00<br><strong>Monthly Tuition:</strong> N$250.00</p>
+  </div>
+
+  <div class="card">
+    <h3>Apply / Register</h3>
+    <form onsubmit="return sendWhatsApp()">
+      <input id="name" type="text" placeholder="Student Full Name" required>
+      <input id="email" type="email" placeholder="Email Address" required>
+      <input id="phone" type="tel" placeholder="Phone Number" required>
+      <textarea id="info" placeholder="Previous School / Additional Information"></textarea>
+      <button class="btn btn-whatsapp" type="submit">Send Application via WhatsApp</button>
+    </form>
+    <a href="registration-form.pdf" class="btn btn-primary" style="display:block;text-align:center;margin-top:10px;text-decoration:none">Download Registration Form (PDF)</a>
+  </div>
+
+  <div class="card">
+    <h3>Mini Learning Quiz 🎮📘</h3>
+    <div class="game-box">
+      <p id="q">What is 5 × 6?</p>
+      <div class="grid">
+        <button class="game-btn" onclick="answer(30)">30</button>
+        <button class="game-btn" onclick="answer(25)">25</button>
+        <button class="game-btn" onclick="answer(35)">35</button>
+        <button class="game-btn" onclick="answer(20)">20</button>
+      </div>
+      <p><strong>Score:</strong> <span id="score">0</span></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Contact & Location</h3>
+    <p><strong>Address:</strong><br>ERF 1316, Nam Dan Shopping Centre</p>
+    <p><strong>Phone:</strong><br>+264 81 684 2211<br>+264 81 221 0888</p>
+    <p><strong>Email:</strong><br>zhcollegecc@gmail.com</p>
+    <iframe src="https://www.google.com/maps?q=Nam%20Dan%20Shopping%20Centre&output=embed" width="100%" height="220" style="border:0;border-radius:14px" loading="lazy"></iframe>
+  </div>
+
+  <div class="spacer"></div>
+</div>
+
+<div class="bottom-nav">
+  <a href="#">Home</a>
+  <a href="#">Subjects</a>
+  <a href="#">Apply</a>
+  <a href="#">Contact</a>
+</div>
+
+<footer>© 2026 Zion Heights Tutorial College</footer>
+
+<script>
+  function sendWhatsApp(){
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const info = document.getElementById('info').value;
+    const msg = `ZHTC APPLICATION%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0AInfo: ${encodeURIComponent(info)}`;
+    window.open(`https://wa.me/264816842211?text=${msg}`, '_blank');
+    return false;
+  }
+
+  let score = 0;
+  function answer(val){
+    if(val === 30){ score++; alert('Correct!'); }
+    else{ alert('Wrong answer'); }
+    document.getElementById('score').innerText = score;
+    nextQ();
+  }
+  const questions = [
+    {q:'What is 5 × 6?', a:30, o:[30,25,35,20]},
+    {q:'Capital of Namibia?', a:'Windhoek', o:['Windhoek','Oshakati','Walvis Bay','Rundu']},
+    {q:'H₂O is?', a:'Water', o:['Oxygen','Hydrogen','Water','Salt']}
+  ];
+  let qi = 0;
+  function nextQ(){
+    qi = (qi+1)%questions.length;
+    const qu = questions[qi];
+    document.getElementById('q').innerText = qu.q;
+    const btns = document.querySelectorAll('.game-btn');
+    btns.forEach((b,i)=> b.innerText = qu.o[i]);
+  }, 5000);
+    }
+    if(playing){ score++; document.getElementById('score').innerText = score; }
+  }
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js');
+    });
+  }
+</script>
+
+</body>
+</html>
